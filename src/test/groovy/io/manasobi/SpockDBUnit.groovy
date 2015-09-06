@@ -16,25 +16,33 @@ import spock.lang.Specification
 /**
  * Created by twjang on 15. 9. 3.
  */
-//@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = DataSourceConfig.class)
-//@ContextConfiguration(loader = SpringApplicationContextLoader.class)
-@TestExecutionListeners([ DependencyInjectionTestExecutionListener.class,
-    FlywayDBUnitTestExecutionListener.class ])
+@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = TestConfig.class)
+@TestExecutionListeners([DependencyInjectionTestExecutionListener.class,
+    FlywayDBUnitTestExecutionListener.class])
+@FlywayTest
 class SpockDBUnit extends Specification {
 
-    @FlywayTest()
     def setup() {
         println('start')
     }
 
-    @DBUnitSupport(loadFilesForRun = ["INSERT", "/dataset/dbunit.xml"])
+    @DBUnitSupport(loadFilesForRun = ["INSERT", "/dataset/person.xml"])
     def test1() {
         when:
-            println('123')
+            println('test-1')
 
         then:
-            println('1234')
+            println('test-1')
+
+    }
+
+    @DBUnitSupport(loadFilesForRun = ["INSERT", "/dataset/person2.xml"])
+    def test2() {
+        when:
+        println('test-2')
+
+        then:
+        println('test-2')
 
     }
 

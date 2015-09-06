@@ -47,8 +47,18 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude module: 'tomcat-jdbc'
+    }
     compile("commons-dbcp:commons-dbcp:1.4")
     compile 'org.slf4j:slf4j-simple:1.6.6'
+
+    compile 'com.mysema.querydsl:querydsl-jpa:3.6.0'
+    compile 'com.mysema.querydsl:querydsl-apt:3.6.0'
+
+
+
+
     testCompile("com.h2database:h2")
     //___testCompile___
     testCompile 'org.springframework.boot:spring-boot-starter-test'
@@ -70,4 +80,43 @@ configurations {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.5'
+}
+
+
+sourceSets {
+    generated {
+        java {
+            srcDirs = ['src/main/querydsl']
+        }
+    }
+}
+
+task generateQueryDSL(type: JavaCompile, group: 'build') {
+    source = sourceSets.main.java
+    classpath = configurations.compile
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
+    ]
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+}
+
+compileJava {
+    dependsOn generateQueryDSL
+    source generateQueryDSL.destinationDir
+}
+compileGeneratedJava {
+    dependsOn generateQueryDSL
+    options.warnings = false
+    classpath += sourceSets.main.runtimeClasspath
+}
+
+clean {
+    delete sourceSets.generated.java.srcDirs
+}
+
+idea {
+    module {
+        sourceDirs += file('src/main/querydsl')
+    }
 }

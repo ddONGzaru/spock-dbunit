@@ -12,7 +12,9 @@
     limitations under the License.
 -->
 <dataset>
-    <CUSTOMER CUS_ID="-200" CUS_NAME="DBUnit 1" />
-    <CUSTOMER CUS_ID="-210" CUS_NAME="DBUnit 2" />
+    <PERSON FIRST_NAME="1-200" LAST_NAME="DBUnit 100" />
+    <PERSON FIRST_NAME="2-200" LAST_NAME="DBUnit 200" />
+    <PERSON FIRST_NAME="3-200" LAST_NAME="DBUnit 300" />
+
 
 </dataset>
