@@ -1,5 +1,7 @@
 package io.manasobi.config;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -11,14 +13,11 @@ import javax.sql.DataSource;
 /**
  * Created by Administrator on 2015-09-06.
  */
-@Configuration
-@EnableConfigurationProperties
+@SpringBootApplication
 public class TestConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix="spring.datasource.test")
-    public DataSource testDataSource() {
-        return DataSourceBuilder.create().build();
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(TestConfig.class, args);
     }
 
     //System.setProperty("spring.profiles.active","dev");
