@@ -12,9 +12,9 @@
     limitations under the License.
 -->
 <dataset>
-    <PERSON FIRST_NAME="1-200" LAST_NAME="DBUnit 1" />
-    <PERSON FIRST_NAME="2-200" LAST_NAME="DBUnit 2" />
-    <PERSON FIRST_NAME="3-200" LAST_NAME="DBUnit 3" />
+    <PERSON PERSON_ID="1" FIRST_NAME="1-200" LAST_NAME="DBUnit 1" />
+    <PERSON PERSON_ID="2" FIRST_NAME="2-200" LAST_NAME="DBUnit 2" />
+    <PERSON PERSON_ID="3" FIRST_NAME="3-200" LAST_NAME="DBUnit 3" />
 
 
 </dataset>

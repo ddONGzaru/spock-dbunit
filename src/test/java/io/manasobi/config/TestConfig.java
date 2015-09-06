@@ -62,7 +62,7 @@ public class TestConfig {
         emf.setDataSource(dataSource);
         emf.setJpaVendorAdapter(jpaVendorAdapter());
         emf.setPersistenceUnitName("rss");
-        emf.setPackagesToScan("pe.kr.ddakker.jpa.domain");
+        emf.setPackagesToScan("io.manasobi.jpa");
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         //properties.put("hibernate.hbm2ddl.auto", "create-drop");
