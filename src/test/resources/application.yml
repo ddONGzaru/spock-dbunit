@@ -1,22 +1,16 @@
 #debug: true
 
 spring:
+    datasource:
+        test:
+            driver-class-name: org.hsqldb.jdbcDriver
+            jdbc-url: jdbc/:hsqldb/:mem/:test
+            username: sa
+            password:
     profiles.active: dev
     view:
         prefix: /WEB-INF/views/
         suffix: .jsp
-        
-# MONGODB (MongoProperties)
-    data:
-        mongodb:
-            host: 127.0.0.1
-            port: 27017
-            database: manasobi
-        
-
-spring.dao.exceptiontranslation.enabled: false
-
-
 
 logging.level: 
     io.recruit: INFO

@@ -5,21 +5,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
 /**
- * Created by Administrator on 2015-09-06.
+ * Created by bw on 9/1/15.
  */
 @Configuration
 @EnableConfigurationProperties
-public class TestConfig {
+public class DataSourceConfig {
 
     @Bean
     @ConfigurationProperties(prefix="spring.datasource.test")
     public DataSource testDataSource() {
         return DataSourceBuilder.create().build();
     }
-
-    //System.setProperty("spring.profiles.active","dev");
 }
